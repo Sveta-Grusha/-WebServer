@@ -83,10 +83,7 @@ def before_request():
 @app.route('/index')
 def index():
     session = db_session.create_session()
-    if g.user.is_authenticated:
-        works = session.query(Work).all()
-    else:
-        works = session.query(Work).filter(Work.registered_only == False)
+    works = session.query(Work).all()
     for work in works:
         photo = session.query(Photo).filter(Photo.work_id == work.id).first()
         if photo:
