@@ -1,0 +1,15 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+<h1>Работы пользователей сайта</h1>
+{% for work in works%}
+    {% if work.voite or not work.registered_only %}
+    <div class="bl ib c"><a href="/work/{{work.id}}"><img src="/static/photos/tumb_{{work.photo_name}}" width="200" height="200" alt="{{work.title}}" title="{{work.title}}" /></a><br />
+    Голосов: {{work.voites_count}}<br />
+    {% if voite %}
+    {% if work.voite %}<a itemprop="url" class="lb g" href="/voite/{{work.id}}" target="_blank">{% else %}<span class="lb g">{% endif %}Голосовать{% if work.voite %}</a>{% else %}</span>{% endif %}
+    {% endif %}
+    </div>
+    {% endif %}
+{% endfor %}
+{% endblock %}
