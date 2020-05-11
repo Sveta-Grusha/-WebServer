@@ -1,0 +1,15 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+{% if form %}
+<h1>Вы действительно хотите удалить работу &quot;{{work.title}}&quot;?</h1>
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    {{ form.csrf_token }}
+    <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+    {{message}}
+</form>
+{% else %}
+<h1>Работа не найдена</h1>
+{% endif %}
+{% endblock %}

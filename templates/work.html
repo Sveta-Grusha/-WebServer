@@ -1,0 +1,30 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+{% if work %}
+    <h1>Работа: {{work.title}}</h1>
+    <a itemprop="url" class="lb g" href="/user/edit_work/{{work.id}}">Редактировать</a>
+    <a itemprop="url" class="lb g" href="/user/delete_work/{{work.id}}">Удалить</a>
+    <a itemprop="url" class="lb1 g" href="/user/upload_photo/{{work.id}}">Добавить фото</a>
+    <p>{{work.description}}</p>
+    {% if work.registered_only %}
+    <h5>Только для зарегистрированных пользователей</h5>
+    {% else %}
+    <h5>Публичная</h5>
+    {% endif %}
+    <h3>Фотографии</h3>
+{% for photo in photos %}
+    <div><div class="bl ib"><img src="/static/photos/{{photo.filename}}" alt={{photo.alt}} title={{photo.title}} />
+    </div><div class="bl ib">
+    <a itemprop="url" class="lb g" href="/user/rotateccv_photo/{{photo.id}}">Повернуть -90</a><br />
+    <a itemprop="url" class="lb g" href="/user/rotatecv_photo/{{photo.id}}">Повернуть +90</a><br />
+    <a itemprop="url" class="lb g" href="/user/rotate180_photo/{{photo.id}}">Повернуть 180</a><br />
+    <a itemprop="url" class="lb g" href="/user/mirrorv_photo/{{photo.id}}">Отразить |</a><br />
+    <a itemprop="url" class="lb g" href="/user/mirrorh_photo/{{photo.id}}">Отразить ---</a><br />
+    <a itemprop="url" class="lb g" href="/user/delete_photo/{{photo.id}}">Удалить</a></div>
+{% endfor %}
+{% else %}
+    <h1>Работа не найдена</h1>
+{% endif %}
+
+{% endblock %}

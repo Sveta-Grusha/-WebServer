@@ -1,0 +1,10 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>Страница пользователя {{ g.user.name }}!</h1>
+    <a itemprop="url" class="lb1 g" href="/user/add_work">Добавить работу</a>
+    <h2>Добавленные работы</h2>
+{% for item in works %}
+    <h3><a href="/user/work/{{item.id}}">{{item.title}}</a></h3>
+{% endfor %}{% endblock %}

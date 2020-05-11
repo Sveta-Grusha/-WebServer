@@ -1,0 +1,24 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+{% if work %}
+    <h1>Работа: {{work.title}}</h1>
+    <a itemprop="url" class="lb g" href="/admin/edit_work/{{work.id}}">Редактировать</a>
+    <a itemprop="url" class="lb g" href="/admin/delete_work/{{work.id}}">Удалить</a>
+    <p>{{work.description}}</p>
+    {% if work.registered_only %}
+    <h5>Только для зарегистрированных пользователей</h5>
+    {% else %}
+    <h5>Публичная</h5>
+    {% endif %}
+    <h3>Фотографии</h3>
+{% for photo in photos %}
+    <div><div class="bl ib"><img src="/static/photos/{{photo.filename}}" alt={{photo.alt}} title={{photo.title}} />
+    </div><div class="bl ib">
+    <a itemprop="url" class="lb g" href="/admin/delete_photo/{{photo.id}}">Удалить</a></div>
+{% endfor %}
+{% else %}
+    <h1>Работа не найдена</h1>
+{% endif %}
+
+{% endblock %}

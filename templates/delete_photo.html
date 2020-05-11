@@ -1,0 +1,16 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+{% if form %}
+<h1>Вы действительно хотите удалить фотографию?</h1>
+<div><img src="/static/photos/{{photo.filename}}" alt={{photo.alt}} title={{photo.title}} /></div>
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    {{ form.csrf_token }}
+    <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+    {{message}}
+</form>
+{% else %}
+<h1>Фотография не найдена</h1>
+{% endif %}
+{% endblock %}

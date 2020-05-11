@@ -1,0 +1,10 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>Страница администратора {{ g.user.name }}!</h1>
+    <a itemprop="url" class="lb g" href="/admin/users">Пользователи</a>
+    <h2>Добавленные работы</h2>
+{% for item in works %}
+    <h3><a href="/admin/work/{{item.id}}">{{item.title}}</a></h3>
+{% endfor %}{% endblock %}

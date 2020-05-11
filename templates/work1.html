@@ -1,0 +1,17 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+{% if work %}
+    <h1>Работа: {{work.title}}</h1>
+    <p>Автор {{user.name}}</p>
+	{% if voite %}<p><a itemprop="url" class="lb g" href="/voite/{{work.id}}" target="_blank">Голосовать</a></p>{% endif %}
+    <p>{{work.description}}</p>
+    <h3>Фотографии</h3>
+{% for photo in photos %}
+    <div class="bl"><img src="/static/photos/{{photo.filename}}" alt={{photo.alt}} title={{photo.title}} /></div>
+{% endfor %}
+{% else %}
+    <h1>Работа не найдена</h1>
+{% endif %}
+
+{% endblock %}

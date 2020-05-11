@@ -1,0 +1,10 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>Страница администратора {{ g.user.name }}!</h1>
+    <a itemprop="url" class="lb g" href="/admin">Список работ</a>
+    <h2>Пользователи</h2>
+{% for item in users %}
+    <h3>{{item.name}} <a href="/admin/delete_user/{{item.id}}">Удалить</a></h3>
+{% endfor %}{% endblock %}

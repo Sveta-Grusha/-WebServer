@@ -1,0 +1,41 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+    <style>
+        .bl{padding:7px}
+	.ib{display:inline-block;vertical-align:top;}
+        .c{align:center;}
+        .lb{padding:7px;margin-bottom:10px;font-size:20px;display:inline-block;width:200px;}
+        .lb1{padding:7px;margin-bottom:10px;font-size:20px;display:inline-block;width:400px;}
+        .g{background:#0066cc;background:linear-gradient(top,#0066cc 0%,#0058bf 35%,#004077 100%);background:-o-linear-gradient(top,#0066cc 0%,#0058bf 35%,#004077 100%);background:-webkit-linear-gradient(top,#0066cc 0%,#0058bf 35%,#004077 100%);background:-moz-linear-gradient(top,#0066cc 0%,#0058bf 35%,#004077 100%);text-shadow:-1px -1px 0px #222222;text-align:center;text-decoration:none;border-radius:3px;color:white;}
+    </style>
+    <title>{{title}}</title>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-light bg-light">
+        <h1><a class="navbar-brand" href="#">Выставка мастеров</a></h1>
+    </nav>
+<div><a itemprop="url" class="lb g" href="/">Главная</a>
+{% if g.user.is_authenticated %}
+<a itemprop="url" class="lb g" href="/logout">Выйти</a>
+<a itemprop="url" class="lb1 g" href="/user">К списку работ</a>
+{% else %}
+
+<a itemprop="url" class="lb g" href="/register">Регистрация</a>
+<a itemprop="url" class="lb g" href="/login">Войти</a>
+{% endif %}
+</div>
+</header>
+<!-- Begin page content -->
+<main role="main" class="container">
+    {% block content %}{% endblock %}
+</main>
+</body>
+</html>
